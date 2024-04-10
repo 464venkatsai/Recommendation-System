@@ -3,6 +3,7 @@ from requests.utils import requote_uri
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from backend.app.recommender import get_recommendations, cosine_sim2
+from backend.app.config import API_KEY
 import requests
 
 app = FastAPI()
@@ -16,7 +17,7 @@ async def showHomePage(request: Request):
 
 @app.get("/api/{movieName}")
 async def read_item(movieName: str):
-    url =requote_uri(f'http://www.omdbapi.com/?t={movieName}&apiKey=a9c6976d')
+    url =requote_uri(f'http://www.omdbapi.com/?t={movieName}&apiKey={API_KEY}')
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()

@@ -7,11 +7,21 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <input id="movie-name" name="MovieName" type="text">
-    <button onclick="fetchRecommendations()">Get Recommendation</button>
-    <h1>Recommended Movies</h1>
-    <div id="recommendation-container">
-        ehllo
+    <nav>
+        <ul>
+            <li>Movie Recommender</li>
+        </ul>
+    </nav>
+    <div class="search-box">
+        <section>
+            <input id="movie-search-bar" name="MovieName" type="text" placeholder="Enter a Movie Name">
+        </section>
+        <button class="btn" id="search-btn">Search</button>
+    </div>
+    <div class="show-recommendations">
+        <h2>Recommended Movies</h2>
+        <div id="recommendation-container">
+        </div>
     </div>
 </body>
 <script src="./static/index.js"></script>

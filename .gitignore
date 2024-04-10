@@ -1,3 +1,4 @@
 __pycache__
 ./backend/app/data
+backend/app/__pycache__
 movie recommendation system.ipynb
