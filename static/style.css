@@ -4,6 +4,8 @@
     --third-font:  "Poppins", sans-serif;
     --main-background: rgb(14 ,17 ,23);
     --main-color:rgb(213 ,218 ,229);
+    --secondary-color:rgba(213, 218, 229, 0.619);
+    --border-color:rgba(16, 20, 29, 0.5);
   }
 body{
     background-color: rgb(14 ,17 ,23);
@@ -39,11 +41,15 @@ nav ul li{
     line-height: 30px;
     word-spacing: 5px;
 }
+
+/* Search Bar And Suggestion */
 .search-box{
     display: flex;
     width: 100%;
     margin-top: 5rem;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 #movie-search-bar{
     background-color: var(--main-background);
@@ -55,11 +61,55 @@ nav ul li{
     font-weight: 500;
     color: var(--main-color);
 }
+.suggestion{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
 .search-box section{
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.result-box{
+    position: absolute;
     width: 60%;
+    background-color: rgb(16, 22, 37);
+    margin-right: 8.5rem;
+    border-bottom-left-radius:10px ;
+    border-bottom-right-radius:10px ;
+    max-height: 15rem;
+    overflow-y: scroll;
+}
+.result-box ul{
+    margin: 0;
+    padding: 0 !important;
+    padding: 10px 15px;
+}
+.result-box ul li{
+    padding: 10px 15px;
+    border-top: 1px solid rgb(38, 44, 57);
+    list-style: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.result-box ul li:hover{
+    background-color: rgb(24, 31, 46)
+}
+
+/* Movie Details section Design */
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container section{
+    width: 80%;
 }
 .show-recommendations{
-    padding: 5% 7%;
+    flex-direction: column ;
 }
 #recommendation-container{
     display: grid;
@@ -67,27 +117,96 @@ nav ul li{
     row-gap: 5rem;
     column-gap: 1rem;
 }
+.movie-details{
+    display: flex;
+    width: 60% !important;
+    margin: 4rem 0;
+    justify-content: space-between;
+}
+.movie-details section{
+    width: 40%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+.movie-details section img{
+    border-radius: 20px;
+    width: 80%;
+}
+#Story-Line{
+    line-height: 23px;
+    margin-top: 0.5rem;
+    font-size: 15px;
+}
+.movie-details div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.movie-details div section{
+    width: 100%;
+}
+.movie-meta-data{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.movie-meta-data div{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin: 0.5rem 0;
+}
+
+.movie-meta-data div b{
+    display: inline-flex;
+    width: 8rem !important;
+    font-weight: 300;
+    font-family: var(--secondary-font);
+    letter-spacing: normal;
+    color: rgba(192, 192, 192, 0.366);
+    font-size: small;
+    line-height: 17.5px;
+}
+.movie-meta-data div p{
+    margin: 0 !important;
+    display: flex;
+    border-radius: 0;
+    font-family: var(--third-font);
+    line-height: 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+/* Recommendation Section Designs */
 .card{
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+.card:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }
 .card img {
     width: 100%;
     aspect-ratio: 2.5/4;
+    height: 100%;
 }
 .skeletonCard {
+    display: grid;
     width: 250px; /* Adjust width as needed */
     height: 400px; /* Adjust height as needed */
     overflow: hidden;
-    gap: 1rem;
     border-radius: 10px;
     position: relative;
-    
     background-color:rgba(16, 20, 29, 0.5);
 }
 
+/* Skeletion Animation and Class */
 .skeleton {
     position: absolute;
     top: 0;

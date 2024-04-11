@@ -12,16 +12,69 @@
             <li>Movie Recommender</li>
         </ul>
     </nav>
+    <!-- Search Bar  -->
     <div class="search-box">
         <section>
-            <input id="movie-search-bar" name="MovieName" type="text" placeholder="Enter a Movie Name">
+            <input id="movie-search-bar" name="MovieName" type="text" placeholder="Enter a Movie Name" autocomplete="on">
+            <button class="btn" id="search-btn">Search</button>
         </section>
-        <button class="btn" id="search-btn">Search</button>
     </div>
-    <div class="show-recommendations">
-        <h2>Recommended Movies</h2>
-        <div id="recommendation-container">
+    <div class="suggestion">
+        <div class="result-box">
         </div>
+    </div>
+    <!-- Searched Movie Details -->
+    <div class="container">
+        <!-- <section class="movie-details">
+            <section>
+                <img src="https://m.media-amazon.com/images/M/MV5BMTMyOTQ5MTAxOF5BMl5BanBnXkFtZTcwOTYzMDg5Mw@@._V1_SX300.jpg" alt="">
+            </section>
+            <div>
+                <h1>Movie Name</h1>
+                <strong>Story Line</strong>
+                <p id="Story-Line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio consequatur saepe quasi sit corrupti nostrum. Voluptatum, adipisci! Veritatis, quia consequuntur fuga temporibus rem rerum commodi assumenda reprehenderit expedita sapiente quam.</p>
+                <section class="movie-meta-data">
+                    <div>
+                        <b>Rating</b>
+                        <section>
+                            <p id="rating">8.4</p>
+                        </section>
+                    </div>
+                    <div>
+                        <b>Release year</b>
+                        <section>
+                            <p id="release-year">2004</p>
+                        </section>
+                    </div>
+                    <div>
+                        <b>Genres</b>
+                        <section>
+                            <p id="genres">Animation, Adventure, Comedy, Family, Fantasy, Music, Mystery</p>
+                        </section>
+                    </div>
+                    <div>
+                        <b>Countries</b>
+                        <section>
+                            <p id="countries">United States</p>
+                        </section>
+                    </div>
+                    <div>
+                        <b>Languages</b>
+                        <section>
+                            <p id="languages">English, Hindi</p>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </section> -->
+    </div>
+    <!-- Recommendations Division -->
+    <div class="show-recommendations container">
+        <h2>Recommended Movies</h2>
+        <section>
+            <div id="recommendation-container">
+            </div>
+        </section>
     </div>
 </body>
 <script src="./static/index.js"></script>

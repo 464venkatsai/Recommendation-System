@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from backend.app.recommender import get_recommendations, cosine_sim2
 from backend.app.config import API_KEY
+from backend.app.utils import getAllMovieNames
 import requests
 
 app = FastAPI()
@@ -12,7 +13,7 @@ templates = Jinja2Templates(directory="templates")
 app.mount("/static",StaticFiles(directory="static"),name="static")
 
 @app.get("/")
-async def showHomePage(request: Request):
+async def showHomePage(request:Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/api/{movieName}")
@@ -25,6 +26,10 @@ async def read_item(movieName: str):
     else:
         return {"error": "Failed to fetch data from OMDb API"}
     
+
+@app.get("/getAllMovies")
+async def AllMovies():
+    return {"Success": True, "Movies": list(getAllMovieNames())}
 
 @app.get("/recommendation/{MovieName}")
 async def getRecommendation(MovieName):
