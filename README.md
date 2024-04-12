@@ -51,11 +51,16 @@ Recommendation-System/
 - 🖥️ **Run Following Commands In Terminal**<br>
     - Install all the `pip install -r requirements.txt`
     - To start fastapi server  `uvicorn backend.app.main:app --reload`
-    - be patient till you this
+    - be patient till you see Application started
+    - - ![Screenshot 2024-04-12 235427](https://github.com/464venkatsai/Recommendation-System/assets/112299999/18b383c9-48cd-4ccd-8dca-65e1c00c357e)
     - finally check `http://127.0.0.1:8000` for movie recommendation system
 <br>
+
 ## Docker
 - If u have docker just run `docker run -it -p 8000:8000 movie_recommeder` in your terminal
+- ![Screenshot 2024-04-12 235427](https://github.com/464venkatsai/Recommendation-System/assets/112299999/18b383c9-48cd-4ccd-8dca-65e1c00c357e)
+- finally check `http://127.0.0.1:8000` for movie recommendation system
+
 
 ## 🙌 Want to contribute?
 We are open to all kinds of contributions. If you want to:
