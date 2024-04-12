@@ -11,18 +11,7 @@ document.getElementById("search-btn").addEventListener("click", function() {
 });
 
 const resultBox = document.querySelector(".result-box");
-let ALL_Movies = [
-    "JAVASCRIPT",
-    "VENKATSAI",
-    "CLASH OF CLANS",
-    "HTML",
-    "CSS",
-    "FREE FIRE",
-    "PYTHON",
-    "DEVELOPMENT",
-    "LIFE",
-    "DREAMS",
-]
+let ALL_Movies = []
 /**
  * Function to fetch all the movie name for the search suggestions
  */
@@ -43,7 +32,7 @@ movieName.onkeyup = function ShowSuggestions() {
     let input = movieName.value;
     if (input.length){
         result = ALL_Movies.filter((keyword)=>{
-        return keyword.toLowerCase().includes(input.toLowerCase());
+            return keyword.toLowerCase().includes(input.toLowerCase());
         });
     }   
     displaySuggestions(result);
@@ -131,10 +120,43 @@ function showMovieDetails() {
     movieDetailsSection.appendChild(posterSection);
     movieDetailsSection.appendChild(movieDetailsDiv);
     movieDetailsDiv.appendChild(metaDataSection)
-    // movieDetailsSection.appendChild(metaDataSection);
 
     // Append the generated movie details section to the body or any other desired parent element
     parent.appendChild(movieDetailsSection);
+}
+async function showMovieDetailsSkeletonAnimation() {
+    let parent = document.getElementsByClassName("container")[0];
+    parent.innerHTML = `
+        <section class="skeleton-section">
+            <div class="SkeletionCard">
+            </div>
+            <div class="skeleton-meta-data">
+                <h2></h2>
+                <div class="story-plot"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="skeletion-movie-data">
+                    <section>
+                        <p></p>
+                        <b></b>
+                    </section>
+                    <section>
+                        <p></p>
+                        <b></b>
+                    </section>
+                    <section>
+                        <p></p>
+                        <b></b>
+                    </section>
+                    <section>
+                        <p></p>
+                        <b></b>
+                    </section>
+                </div>
+            </div>
+        </section>
+    `;
 }
 
 /**
@@ -261,6 +283,7 @@ async function showRecommendations() {
  */
 async function fetchPosterAndShowRecommendedMovies(recommendedMovies) {
     try {
+        showMovieDetailsSkeletonAnimation();
         await fetchMovieDetails(movieName.value,currentmovie=true)
         showMovieDetails()
         // Fetches all the movie Posters and pushing to RECOMMENDED_MOVIE_POSTERS

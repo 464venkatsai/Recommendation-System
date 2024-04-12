@@ -79,7 +79,7 @@ nav ul li{
     margin-right: 8.5rem;
     border-bottom-left-radius:10px ;
     border-bottom-right-radius:10px ;
-    max-height: 15rem;
+    max-height: 16.2rem;
     overflow-y: scroll;
 }
 .result-box ul{
@@ -88,7 +88,7 @@ nav ul li{
     padding: 10px 15px;
 }
 .result-box ul li{
-    padding: 10px 15px;
+    padding: 1rem 15px;
     border-top: 1px solid rgb(38, 44, 57);
     list-style: none;
     border-radius: 3px;
@@ -111,11 +111,17 @@ nav ul li{
 .show-recommendations{
     flex-direction: column ;
 }
+.show-recommendations h2{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
 #recommendation-container{
+    width: 100% !important;
     display: grid;
     grid-template-columns: repeat(5, minmax(200px, 1fr)); /* Two columns, responsive */
-    row-gap: 5rem;
-    column-gap: 1rem;
+    row-gap: 2rem;
+    column-gap: 2rem;
 }
 .movie-details{
     display: flex;
@@ -196,17 +202,17 @@ nav ul li{
     aspect-ratio: 2.5/4;
     height: 100%;
 }
+/* Skeletion Animation and Class */
 .skeletonCard {
     display: grid;
-    width: 250px; /* Adjust width as needed */
-    height: 400px; /* Adjust height as needed */
+    width: 250px;
+    height: 400px; 
     overflow: hidden;
     border-radius: 10px;
     position: relative;
     background-color:rgba(16, 20, 29, 0.5);
 }
 
-/* Skeletion Animation and Class */
 .skeleton {
     position: absolute;
     top: 0;
@@ -223,5 +229,63 @@ nav ul li{
     }
     100% {
         transform: translateX(100%);
+    }
+}
+.skeleton-section{
+    display: flex;
+    margin: 4rem 0;
+    justify-content: space-evenly;
+    height: 25rem;
+}
+.SkeletionCard{
+    width: 25%;
+}
+.skeleton-meta-data{
+    width: 40%;
+}
+.skeleton-meta-data b{
+    width: 5rem !important;
+}
+.skeleton-meta-data section{
+    display: flex;
+    margin: 2rem 0;
+    width: 100%;
+}
+.skeletion-movie-data section p{
+    margin: 0;
+    width: 5rem;
+}
+.skeletion-movie-data section b{
+    margin-left: 2rem;
+    width: 100% !important;
+    line-height: 26px;
+}
+.line{
+    margin: 0.5rem 0;
+}
+.story-plot{
+    width: 20%;
+}
+.skeleton-meta-data :nth-child(5){
+    width: 65% !important;
+}
+skeleton-meta-data b,.story-plot,.line,.skeleton-meta-data h2,.skeleton-meta-data p,.skeleton-meta-data b, skeletion-movie-data p,skeletion-movie-data b{
+    background-image:linear-gradient(90deg, rgba(183, 71, 71, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(180, 59, 59, 0) 100%) ;
+    height: 1rem;
+    background-size: 200%;
+    background-position: 100% 0;
+    animation: load 1s linear infinite;
+    background-color: rgba(16, 20, 29, 0.5);
+}
+.SkeletionCard{
+    background-image:linear-gradient(90deg, rgba(183, 71, 71, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(180, 59, 59, 0) 100%) ;
+    background-size: 200%;
+    background-position: 100% 0;
+    animation: load 1s linear infinite;
+    background-color: rgba(16, 20, 29, 0.5);
+}
+@keyframes load {
+    100%{
+        background-position: -100% 0;
     }
 }
