@@ -17,6 +17,9 @@ This repository holds a movie recommedation system focusing on a IMBD dataset at
 - 📗 `Readme` : This file provides the overview of the repository. 
 -  📄 `requirements.txt` : This file contains all the dependencies and libaries required for project. 
 
+## Workflow Of Project
+![Flowchart](https://github.com/464venkatsai/Recommendation-System/assets/112299999/0e5bd74b-a374-4b8f-9bbd-ba1b9f448f42)
+
 ## 📄 Instructions for Local Execution 
 
 - 📋 **Clone Repository**:<br>
