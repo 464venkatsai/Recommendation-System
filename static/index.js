@@ -190,7 +190,8 @@ function fetchRecommendations(movie_name) {
  */
 async function fetchMovieDetails(movieName,currentmovie=false) {
     // Fetching Movie Poster from the all the details 
-    const DETAILS_ENDPOINT = `http://www.omdbapi.com/?t=${movieName}&apiKey=a9c6976d`;
+    console.log("Fetching",movieName)
+    const DETAILS_ENDPOINT = `http://127.0.0.1:8000/api/${encodeURIComponent(movieName)}`;
     try {
         const response = await fetch(DETAILS_ENDPOINT);
 
