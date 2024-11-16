@@ -5,9 +5,9 @@ let CURRENT_MOVIE_DETAILS = {};
 
 // Movie entered by user
 const movieName = document.getElementById("movie-search-bar");
-document.getElementById("search-btn").addEventListener("click", function() {
+document.getElementById("search-btn").addEventListener("click", async function() {
     console.log(movieName.value)
-    fetchRecommendations(movieName.value);
+    await fetchRecommendations(movieName.value);
 });
 
 const resultBox = document.querySelector(".result-box");
@@ -56,6 +56,7 @@ function selectInput(list){
  * Clears Previous movie details and shows current movie details
  */
 function showMovieDetails() {
+
     // Getting the parent class
     let parent = document.getElementsByClassName("container")[0]
     parent.innerHTML = ""
@@ -163,7 +164,7 @@ async function showMovieDetailsSkeletonAnimation() {
  * Function to fetch movie recommendations based on the given movie name.
  * Clears previous movie recommendations and fetchs recommendations for the current movie 
  */
-function fetchRecommendations(movie_name) {
+async function fetchRecommendations(movie_name) {
     // Showing Skeletion Animation for user
     ShowSkeletonAnimation();
     // Ensuring recommendations are empty
@@ -173,11 +174,12 @@ function fetchRecommendations(movie_name) {
     // Fetching recommendations for the movie name
     console.log("fetching movie",movie_name)
     API_URL = `http://127.0.0.1:8000/recommendation/${encodeURIComponent(movie_name)}`;
-    fetch(API_URL)
+    await fetch(API_URL)
         .then(response => {if (!response.ok) {throw new Error('Network response was not ok'); }return response.json();})
         .then(data => {
 
             // fetching movie Poster's that are present in RECOMMENDED_MOVIES and making response
+            console.log(data)
             RECOMMENDED_MOVIES = data["recommendations"];
             fetchPosterAndShowRecommendedMovies(RECOMMENDED_MOVIES);
         })
@@ -190,6 +192,7 @@ function fetchRecommendations(movie_name) {
  */
 async function fetchMovieDetails(movieName,currentmovie=false) {
     // Fetching Movie Poster from the all the details 
+    console.log(currentmovie,movieName)
     console.log("Fetching",movieName)
     const DETAILS_ENDPOINT = `http://127.0.0.1:8000/api/${encodeURIComponent(movieName)}`;
     try {
@@ -198,6 +201,7 @@ async function fetchMovieDetails(movieName,currentmovie=false) {
         // If response was not ok throwing and network response error
         if (!response.ok) {throw new Error('Network response was not ok');}
         const data = await response.json();
+        console.log("Getting the details : ",data);
         if (currentmovie) {
             CURRENT_MOVIE_DETAILS["Poster"] = data["Poster"];
             CURRENT_MOVIE_DETAILS["MovieName"] = data["Title"];
@@ -259,8 +263,8 @@ async function showRecommendations() {
         
         const card = document.createElement('div');
         card.classList.add('card');
-        card.onclick = function() {
-            fetchRecommendations(RECOMMENDED_MOVIES[index]);
+        card.onclick = async function() {
+            await fetchRecommendations(RECOMMENDED_MOVIES[index]);
         };
         
         const img = document.createElement('img');
@@ -277,6 +281,13 @@ async function showRecommendations() {
         container.appendChild(card);
     };
 }
+const scrollAction = ()=>{
+    document.querySelectorAll(".card").forEach((card)=>{
+        card.addEventListener("click",()=>{
+            card.scrollIntoView({behavior:"smooth",block:"start"})
+        })
+    })
+}
 
 /**
  * function to avoid the asynchronous nature and current programmming
@@ -292,7 +303,7 @@ async function fetchPosterAndShowRecommendedMovies(recommendedMovies) {
             await fetchMovieDetails(movie);
         }
         // Showing the Recommedation in the front-end
-        showRecommendations(recommendedMovies);
+        await showRecommendations(recommendedMovies);
     } catch (error) {
         // Catching for Unexpected error 
         console.error("Error fetching or showing recommended movies:", error);

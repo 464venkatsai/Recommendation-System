@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from backend.app.logger import Log
 
+log = Log()
 
 class Database:
     def  __init__(self,connection,databaseName,collectionName):
@@ -8,7 +9,7 @@ class Database:
         self.client = MongoClient(connection)
         self.database = self.client[databaseName]
         self.collection = self.database[collectionName]
-        Log.info("Successfully Initilized ")
+        log.info("Successfully Initilized ")
 
     def insertOne(self,data):
         return self.collection.insert_one(data)

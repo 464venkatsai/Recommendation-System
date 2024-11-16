@@ -35,7 +35,7 @@ class Log:
         self.logger.warning("WARNING : "+message)
 
     def error(self, message):
-        self.logger.error("ERROR : "+message)
+        self.logger.error("ERROR : ",message)
 
     def fail(self, message):
         self.logger.error("FAILURE : "+message)
